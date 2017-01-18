@@ -3,5 +3,8 @@ description: Check 0.10.0
 version: 0.10.0
 src_uri: http://sourceforge.net/projects/check/files/check/0.10.0/check-0.10.0.tar.gz
 md5: 53c5e5c77d090e103a17f3ed7fd7d8b8
-config_env_vars: PKG_CONFIG=
-config_opts: --prefix=/tools
+commands:
+  - >
+    PKG_CONFIG=""
+    ../../src/check-0.10.0/configure
+    --prefix=/tools

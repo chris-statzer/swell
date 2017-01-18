@@ -3,4 +3,8 @@ description: File 5.29
 version: 5.29
 src_uri: ftp://ftp.astron.com/pub/file/file-5.29.tar.gz
 md5: b7b57b36b577c9cede2f2d1342203302
-config_opts: --prefix=/tools
+commands: 
+  - ../../src/file-5.29/configure --prefix=/tools
+  - make
+#  - make check
+  - make install

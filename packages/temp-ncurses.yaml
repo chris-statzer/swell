@@ -3,11 +3,15 @@ description: Ncurses 6.0
 version: 6.0
 src_uri: http://ftp.gnu.org/gnu//ncurses/ncurses-6.0.tar.gz
 md5: ee13d052e1ead260d7c28071f46eefb1
-config_opts: >
-  --prefix=/tools
-  --with-shared
-  --without-debug
-  --without-ada
-  --enable-widec
-  --enable-overwrite
-config_env_vars: CPPFLAGS="-P"
+commands: 
+  - >
+    CPPFLAGS="-P"
+    ../../src/ncurses-6.0/configure
+    --prefix=/tools
+    --with-shared
+    --without-debug
+    --without-ada
+    --enable-widec
+    --enable-overwrite
+  - make
+  - make install

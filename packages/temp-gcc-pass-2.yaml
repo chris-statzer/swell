@@ -7,17 +7,10 @@ deps:
   - temp-mpc
 src_uri: http://ftp.gnu.org/gnu/gcc/gcc-6.3.0/gcc-6.3.0.tar.bz2
 md5: 677a7623c7ef6ab99881bc4e048debb6
-config_env_vars: CC=$LFS_TGT-gcc CXX=$LFS_TGT-g++ AR=$LFS_TGT-ar RANLIB=$LFS_TGT-ranlib
-config_opts: >
-  --prefix=/tools
-  --with-local-prefix=/tools
-  --with-native-system-header-dir=/tools/include
-  --enable-languages=c,c++
-  --disable-libstdcxx-pch
-  --disable-multilib
-  --disable-bootstrap
-  --disable-libgomp
-preconfigure_commands:
+commands: 
+  - rm -f ../../src/gcc-6.3.0/gmp
+  - rm -f ../../src/gcc-6.3.0/mpfr
+  - rm -f ../../src/gcc-6.3.0/mpc
   - ln -s ../../src/gmp-6.1.2 ../../src/gcc-6.3.0/gmp
   - ln -s ../../src/mpfr-3.1.5 ../../src/gcc-6.3.0/mpfr
   - ln -s ../../src/mpc-1.0.3 ../../src/gcc-6.3.0/mpc
@@ -52,5 +45,17 @@ preconfigure_commands:
     esac
     EOF
     bash fix-lib.sh
-postinstall_commands:
+  - >
+    CC=$LFS_TGT-gcc CXX=$LFS_TGT-g++ AR=$LFS_TGT-ar RANLIB=$LFS_TGT-ranlib
+    ../../src/gcc-6.3.0/configure
+    --prefix=/tools
+    --with-local-prefix=/tools
+    --with-native-system-header-dir=/tools/include
+    --enable-languages=c,c++
+    --disable-libstdcxx-pch
+    --disable-multilib
+    --disable-bootstrap
+    --disable-libgomp
+  - make
+  - make install
   - ln -sv gcc /tools/bin/cc

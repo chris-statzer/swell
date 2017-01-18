@@ -11,9 +11,9 @@ commands:
   - rm -f ../../src/gcc-6.3.0/gmp
   - rm -f ../../src/gcc-6.3.0/mpfr
   - rm -f ../../src/gcc-6.3.0/mpc
-  - ln -sf ../../src/gmp-6.1.2 ../../src/gcc-6.3.0/gmp
-  - ln -sf ../../src/mpfr-3.1.5 ../../src/gcc-6.3.0/mpfr
-  - ln -sf ../../src/mpc-1.0.3 ../../src/gcc-6.3.0/mpc
+  - ln -s ../../src/gmp-6.1.2 ../../src/gcc-6.3.0/gmp
+  - ln -s ../../src/mpfr-3.1.5 ../../src/gcc-6.3.0/mpfr
+  - ln -s ../../src/mpc-1.0.3 ../../src/gcc-6.3.0/mpc
   - |
     cd ../../src/gcc-6.3.0
     cat > fix-head.sh << "EOF"

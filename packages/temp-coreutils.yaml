@@ -3,6 +3,11 @@ description: Coreutils 8.26
 version: 8.26
 src_uri: http://ftp.gnu.org/gnu/coreutils/coreutils-8.26.tar.xz
 md5: d5aa2072f662d4118b9f4c63b94601a6
-config_opts: --prefix=/tools --enable-install-program=hostname
-preinstall_commands:
+commands:
+  - >
+    ../../src/coreutils-8.26/configure
+    --prefix=/tools 
+    --enable-install-program=hostname
+  - make
   - make RUN_EXPENSIVE_TESTS=yes check
+  - make install
