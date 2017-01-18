@@ -1,0 +1,5 @@
+name: temp-create-tarball
+description: create a backup tarball of the temp system
+version: 0.1
+commands:
+  - tar cfz ../../backup/tools-`date +"%Y-%m-%d.%H-%M-%S"`.tar.gz /mnt/lfs

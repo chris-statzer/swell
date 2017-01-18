@@ -1,0 +1,6 @@
+name: build-base-system
+description: Metapackage to build the base LFS system
+version: 0.1
+deps:
+  - base-filesystem
+  - base-linux-headers

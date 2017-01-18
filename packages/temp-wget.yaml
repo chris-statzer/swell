@@ -1,0 +1,8 @@
+name: temp-wget
+description: GNU wget 1.17.1
+version: 1.17.1
+src_uri: ftp://ftp.gnu.org/gnu/wget/wget-1.17.1.tar.xz
+md5: b0d58ef4963690e71effba24c105ed52
+config_opts: --prefix=/tools
+postinstall_commands:
+  - make check

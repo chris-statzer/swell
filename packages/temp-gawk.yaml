@@ -1,0 +1,7 @@
+name: temp-gawk
+description: GNU Gawk 4.1.4
+version: 4.1.4
+src_uri: http://ftp.gnu.org/gnu/gawk/gawk-4.1.4.tar.xz
+md5: 4e7dbc81163e60fd4f0b52496e7542c9
+dir_name: gawk-4.1.4
+config_opts: --prefix=/tools

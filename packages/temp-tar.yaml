@@ -1,0 +1,9 @@
+name: temp-tar
+description: GNU Tar 1.29
+version: 1.29
+src_uri: http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
+md5: a1802fec550baaeecff6c381629653ef
+dir_name: tar-1.29
+config_opts: --prefix=/tools
+preinstall_commands:
+ - make check

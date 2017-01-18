@@ -1,0 +1,7 @@
+*.pyc
+build/
+cache/
+db/
+src/
+patch/
+backup/

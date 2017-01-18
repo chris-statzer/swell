@@ -1,0 +1,5 @@
+name: temp-mpfr
+description: GNU MPFR 3.1.5 (Download only)
+version: 3.1.5
+src_uri: http://www.mpfr.org/mpfr-3.1.5/mpfr-3.1.5.tar.xz
+md5: c4ac246cf9795a4491e7766002cd528f

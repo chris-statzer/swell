@@ -1,0 +1,8 @@
+name: temp-sed
+description: GNU Sed 4.3
+version: 4.3
+src_uri: http://ftp.gnu.org/gnu/sed/sed-4.3.tar.xz
+md5: 1957fe58dffa4a4106c1f1d7cc8dee18
+config_opts: --prefix=/tools
+preinstall_commands:
+ - make check

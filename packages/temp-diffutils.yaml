@@ -1,0 +1,6 @@
+name: temp-diffutils
+description: GNU Diffutils 3.5
+version: 3.5
+src_uri: http://ftp.gnu.org/gnu/diffutils/diffutils-3.5.tar.xz
+md5: 569354697ff1cfc9a9de3781361015fa
+config_opts: --prefix=/tools

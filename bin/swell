@@ -1,0 +1,64 @@
+#!/usr/bin/env python2.7
+
+cli = """
+Usage:
+    swell package list
+    swell package install <package>
+    swell build_temp_system
+    swell build_base_system
+"""
+import sys
+import logging
+
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger('SWELL')
+
+from docopt import docopt
+
+sys.path.insert(0, "./")
+from swell.package import dump_packages, load_packages, resolve_deps
+from swell.task import Task
+
+packages = load_packages()
+
+def list_packages():
+    dump_packages()
+
+def install_package(package):
+    if package in packages:
+        task = Task(packages[package])
+        task.run()
+    else:
+        log.error('{} not found!'.format(package))
+
+def build_temp_system():
+    log.info('Building temp system')
+    packages_to_build = resolve_deps('build-temp-system')
+    for p in packages_to_build:
+        task = Task(packages[p])
+        task.run()
+
+def build_base_system():
+    log.info('Building base system')
+    packages_to_build = resolve_deps('build-base-system')
+    for p in packages_to_build:
+        task = Task(packages[p])
+        task.run()
+
+if __name__ == '__main__':
+    arguments = docopt(cli)
+    # package
+    if arguments['package']:
+        # list
+        if arguments['list']:
+            list_packages()
+        # install
+        elif arguments['install']:
+            if arguments['<package>']:
+                install_package(arguments['<package>'])
+    # build_temp_system
+    elif arguments['build_temp_system']:
+        build_temp_system()
+    # build_temp_system
+    elif arguments['build_base_system']:
+        build_base_system()

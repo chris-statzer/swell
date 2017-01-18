@@ -1,0 +1,7 @@
+name: temp-strip-bins
+description: Strips the tools directory of cruft (not working)
+version: 0.1
+commands:
+ - strip --strip-debug /tools/lib/*
+ - /usr/bin/strip --strip-unneeded /tools/{,s}bin/*
+ - rm -rf /tools/{,share}/{info,man,doc}
