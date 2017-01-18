@@ -11,14 +11,12 @@ for BLFS too.
 Building
 
 * Mount drive
-* make sure $LFS and $LFS_TGT are defined in the env
 * link $LFS/tools to /tools
-* add /tools/bin to the path
 * fix /bin/sh symlink `sudo update-alternatives --install /bin/sh sh /bin/bash 100`
-* check versions with supplied script
 * install build-essential, gawk, texinfo, bison, git
 * install python packages pyyaml, docopt
-* `./bin lfsbuild bootstrap-build-system`
+* check versions with supplied script
+* `./bin/swell build_temp_system
 
 Additions
 
@@ -28,7 +26,7 @@ The list below are packages added to the temp systme built in chapter 5:
 * temp-python-setuptools-33.1.1
 * temp-python-docopt-0.6.2
 * temp-python-pyyaml-3.12
-* temp-pull-lfsbuild (pulls a copy of the framework into our env)
+* temp-pull-swell (pulls a copy of the framework into our env)
 
 Current issues
 

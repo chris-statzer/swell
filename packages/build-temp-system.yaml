@@ -38,6 +38,6 @@ deps:
   - temp-python-setuptools
   - temp-python-docopt
   - temp-python-pyyaml
-  - temp-pull-lfsbuild
+  - temp-pull-swell
   - temp-vkfs-prepare
   - temp-change-ownership

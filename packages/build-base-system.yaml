@@ -4,3 +4,5 @@ version: 0.1
 deps:
   - base-filesystem
   - base-linux-headers
+  - base-manpages
+  - base-glibc

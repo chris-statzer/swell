@@ -1,0 +1,27 @@
+name: base-glibc
+description: GNU Glibc
+version: 2.24
+src_uri: http://ftp.gnu.org/gnu/glibc/glibc-2.24.tar.xz
+md5: 97dc5517f92016f3d70d83e3162ad318
+commands:
+  - patch -Np1 -i ../glibc-2.24-fhs-1.patch
+  - >
+    case $(uname -m) in
+    x86) ln -s ld-linux.so.2 /lib/ld-lsb.so.3
+    ;;
+    x86_64) ln -s ../lib/ld-linux-x86-64.so.2 /lib64
+            ln -s ../lib/ld-linux-x86-64.so.2 /lib64/ld-lsb-x86-64.so.3
+    ;;
+    esac
+  - >
+    ./configure 
+    --prefix=/usr
+    --enable-kernel=2.6.32
+    --enable-obsolete-rpc
+    libc_cv_slibdir=/lib
+  - make
+  - make check
+  - touch /etc/ld.so.conf
+  - make install
+  - cp -v ../nscd/nscd.conf /etc/nscd.conf
+  - mkdir -pv /var/cache/nscd
