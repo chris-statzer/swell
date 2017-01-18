@@ -5,7 +5,7 @@ deps:
   - temp-binutils-pass-1
   - temp-gcc-pass-1
   - temp-linux-headers-pass-1
-  - temp-glibc-pass-1
+  - temp-glibc
   - temp-libstdc++-pass-1
   - temp-binutils-pass-2
   - temp-gcc-pass-2

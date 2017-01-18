@@ -13,23 +13,35 @@ class Task(object):
 
     def run(self):
         log.info('Running task: {}'.format(self.package.name))
+
+        # Check if installed 
+        if os.path.isfile('{}/installed/{}'.format(config.DB_PATH, 
+                                                   self.package.name)):
+            log.info('{} is already installed skipping!'.format(
+                self.package.name))
+            return True
+
         # Download archives
         if self.package.src_uri:
             download(self.package.src_uri, self.package.md5)
 
-        # extract the package to the src directory
-        url = self.package.src_uri
-        filename = url[url.rfind('/')+1:]
-        tar_flags = ''
-        if url[-2:] == 'gz':
-            tar_flags = 'xzf'
-        elif url[-2:] == 'xz':
-            tar_flags = 'xJf'
-        elif url[-3:] == 'bz2':
-            tar_flags = 'xjf'
-        extract_cmd = 'tar {} {}/{} -C {}'.format(tar_flags, config.CACHE_PATH, filename, config.SOURCE_PATH)
-        log.info('Extracting {} to {}'.format(filename, config.SOURCE_PATH))
-        self.run_command(extract_cmd)
+            # extract the package to the src directory
+            url = self.package.src_uri
+            filename = url[url.rfind('/')+1:]
+            tar_flags = ''
+            if url[-2:] == 'gz':
+                tar_flags = 'xzf'
+            elif url[-2:] == 'xz':
+                tar_flags = 'xJf'
+            elif url[-3:] == 'bz2':
+                tar_flags = 'xjf'
+            extract_cmd = 'tar {} {}/{} -C {}'.format(tar_flags, config.CACHE_PATH, filename, config.SOURCE_PATH)
+            log.info('Extracting {} to {}'.format(filename, config.SOURCE_PATH))
+            self.run_command(extract_cmd)
+
+        # delete old build directory if it exists
+        if os.path.isdir(self.build_path):
+            self.run_command('rm -rf {}'.format(self.build_path))
 
         # Setup build path
         self.run_command('mkdir {}'.format(self.build_path))
@@ -37,9 +49,14 @@ class Task(object):
 
         self.run_command_list(self.package.commands)
 
+        log.info('{} installed successfully,'.format(self.package.name))
+
+        # mark package as installed
+        log.info('Marking {} as installed...'.format(self.package.name))
+        self.run_command('touch {}/installed/{}'.format(config.DB_PATH, self.package.name))
+
         # clean up and change the directory back to root
         os.chdir(config.ROOT_PATH)
-        self.run_command('rm -rf {}'.format(self.build_path))
 
 
     def run_command(self, cmd):

@@ -8,9 +8,12 @@ deps:
 src_uri: http://ftp.gnu.org/gnu/gcc/gcc-6.3.0/gcc-6.3.0.tar.bz2
 md5: 677a7623c7ef6ab99881bc4e048debb6
 commands:
-  - ln -s ../../src/gmp-6.1.2 ../../src/gcc-6.3.0/gmp
-  - ln -s ../../src/mpfr-3.1.5 ../../src/gcc-6.3.0/mpfr
-  - ln -s ../../src/mpc-1.0.3 ../../src/gcc-6.3.0/mpc
+  - rm -f ../../src/gcc-6.3.0/gmp
+  - rm -f ../../src/gcc-6.3.0/mpfr
+  - rm -f ../../src/gcc-6.3.0/mpc
+  - ln -sf ../../src/gmp-6.1.2 ../../src/gcc-6.3.0/gmp
+  - ln -sf ../../src/mpfr-3.1.5 ../../src/gcc-6.3.0/mpfr
+  - ln -sf ../../src/mpc-1.0.3 ../../src/gcc-6.3.0/mpc
   - |
     cd ../../src/gcc-6.3.0
     cat > fix-head.sh << "EOF"
@@ -62,3 +65,5 @@ commands:
     --disable-libvtv
     --disable-libstdcxx
     --enable-languages=c,c++
+  - make
+  - make install
