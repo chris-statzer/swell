@@ -5,6 +5,7 @@ log = logging.getLogger('CONF')
 
 
 def setup_temp_build_env():
+    log.info('Setting up temp system build env')
     if not 'LFS' in os.environ:
         os.environ['LFS'] = '/mnt/lfs'
 
@@ -15,7 +16,7 @@ def setup_temp_build_env():
 
 
     os.environ['PATH'] = '/tools/bin:' + os.environ['PATH']
-    log.info('Current PATH: \n\r{}'.format(os.environ['PATH']))
+    # log.info('Current PATH: \n\r{}'.format(os.environ['PATH']))
 
 
 # solve this programically

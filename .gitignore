@@ -5,3 +5,4 @@ db/
 src/
 patch/
 backup/
+.DS_Store

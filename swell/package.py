@@ -45,6 +45,10 @@ class Package(object):
     def homepage(self):
         return self.data.get('homepage', '(none)')
 
+    @property
+    def commands(self):
+        return self.data.get('commands', [])
+
 
 def load_packages():
     package_glob = glob('./packages/*.yaml')

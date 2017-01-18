@@ -7,6 +7,7 @@ log = logging.getLogger("DOWN")
 
 
 def download(url, md5):
+    #TODO: doesnt get md5sum of downloaded.....
     # log.info('downloading {} of type {}'.format(url, file_type))
     filename = url[url.rfind('/')+1:]
     if os.path.isfile('{}/{}'.format(config.CACHE_PATH, filename)):
@@ -17,13 +18,13 @@ def download(url, md5):
             return True
         else:
             log.error('File {} is bad!'.format(filename))
-            return False
+            exit()
     else:
         log.info('Fetching {}...'.format(url))
         return_code = os.system('wget -P {} {}'.format(config.CACHE_PATH, url))
         if return_code != 0:
             log.error('Error downloading {}'.format(url))
             os.system('rm {}/{}'.format(config.CACHE_PATH, filename))
-            return False
+            exit()
         else:
             return True

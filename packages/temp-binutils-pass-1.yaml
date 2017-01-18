@@ -5,13 +5,14 @@ src_uri: http://ftp.gnu.org/gnu/binutils/binutils-2.27.tar.bz2
 md5: 2869c9bf3e60ee97c74ac2a6bf4e9d68
 commands:
   - >
-    ./configure
+    ../../src/binutils-2.27/configure
     --prefix=/tools
     --with-sysroot=$LFS
     --with-lib-path=/tools/lib
     --target=$LFS_TGT
     --disable-nls
     --disable-werror
+  - make
   - |
     cat > link-lib.sh << "EOF"
     case $(uname -m) in
@@ -19,3 +20,4 @@ commands:
     esac
     EOF
     bash link-lib.sh
+  - make install

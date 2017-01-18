@@ -18,6 +18,7 @@ from docopt import docopt
 sys.path.insert(0, "./")
 from swell.package import dump_packages, load_packages, resolve_deps
 from swell.task import Task
+from swell import config
 
 packages = load_packages()
 
@@ -33,6 +34,7 @@ def install_package(package):
 
 def build_temp_system():
     log.info('Building temp system')
+    config.setup_temp_build_env()
     packages_to_build = resolve_deps('build-temp-system')
     for p in packages_to_build:
         task = Task(packages[p])

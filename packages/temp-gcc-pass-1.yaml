@@ -40,7 +40,7 @@ commands:
     EOF
     bash fix-lib.sh
   - >
-    ./configure
+    ../../src/gcc-6.3.0/configure
     --target=$LFS_TGT
     --prefix=/tools
     --with-glibc-version=2.23
