@@ -3,12 +3,12 @@ description: GNU Glibc 2.24
 version: 2.24
 src_uri: http://ftp.gnu.org/gnu/glibc/glibc-2.24.tar.xz
 md5: 97dc5517f92016f3d70d83e3162ad318
-commands: 
+commands:
   - >
     ../../src/glibc-2.24/configure
     --prefix=/tools
     --host=$LFS_TGT
-    --build=$(../scripts/config.guess)
+    --build=$(../../src/glibc-2.24/config.guess)
     --enable-kernel=2.6.32
     --with-headers=/tools/include
     libc_cv_forced_unwind=yes
