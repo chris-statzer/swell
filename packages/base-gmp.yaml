@@ -1,0 +1,18 @@
+name: base-gmp
+description: GNU GMP 6.1.2
+version: 6.1.2
+src_uri: http://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
+md5: f58fa8001d60c4c77595fbbb62b63c1d
+commands:
+  - /sbin/ldconfig -v
+  - >
+    ../../src/gmp-6.1.2/configure --prefix=/usr
+    --enable-cxx
+    --disable-static
+    --docdir=/usr/share/doc/gmp-6.1.2
+  - make
+  - make html
+  - make check 2>&1 | tee gmp-check-log
+  - awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log
+  - make install
+  - make install-html

@@ -47,7 +47,7 @@ commands:
   - localedef -i tr_TR -f UTF-8 tr_TR.UTF-8
   - localedef -i zh_CN -f GB18030 zh_CN.GB18030
   - make localedata/install-locales
-  - >
+  - |
     cat > /etc/nsswitch.conf << "EOF"
     # Begin /etc/nsswitch.conf
 
@@ -77,15 +77,15 @@ commands:
   - cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
   - zic -d $ZONEINFO -p America/New_York
   - cp -v /usr/share/zoneinfo/America/New_York /etc/localtime
-  - >
+  - |
     cat > /etc/ld.so.conf << "EOF"
     # Begin /etc/ld.so.conf
     /usr/local/lib
     /opt/lib
 
     EOF
-  - >
-    cat >> /etc/ld.so.conf << "EOF"
+  - |
+    cat > /etc/ld.so.conf << "EOF"
     # Add an include directory
     include /etc/ld.so.conf.d/*.conf
 

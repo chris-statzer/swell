@@ -1,0 +1,16 @@
+name: base-binutils
+description: GNU Binutils 2.27
+version: 2.27
+src_uri: http://ftp.gnu.org/gnu/binutils/binutils-2.27.tar.bz2
+md5: 2869c9bf3e60ee97c74ac2a6bf4e9d68
+commands:
+  - >
+    ../../src/binutils-2.27/configure
+    --prefix=/usr
+    --enable-plugins
+    --enable-shared
+    --disable-werror
+    --with-system-zlib
+  - make tooldir=/usr
+  - make -k check
+  - make tooldir=/usr install

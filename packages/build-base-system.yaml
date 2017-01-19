@@ -7,3 +7,8 @@ deps:
   - base-manpages
   - base-tzdata
   - base-glibc
+  - base-adjust-toolchain
+  - base-zlib
+  - base-file
+  - base-binutils
+  - base-gmp
