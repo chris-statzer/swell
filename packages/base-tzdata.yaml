@@ -1,4 +1,4 @@
-name: temp-tzdata
+name: base-tzdata
 description: tzdata 2006j (Download only)
 version: 2006j
 src_uri: http://www.iana.org/time-zones/repository/releases/tzdata2016j.tar.gz

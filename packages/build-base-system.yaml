@@ -5,5 +5,5 @@ deps:
   - base-filesystem
   - base-linux-headers
   - base-manpages
-  - bade-tzdata
+  - base-tzdata
   - base-glibc
