@@ -18,6 +18,9 @@ def setup_temp_build_env():
     os.environ['PATH'] = '/tools/bin:' + os.environ['PATH']
     # log.info('Current PATH: \n\r{}'.format(os.environ['PATH']))
 
+def setup_base_build_env():
+    os.environ['ZONEINFO'] = '/usr/share/zoneinfo'
+    os.environ['PATH'] = '/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin'
 
 # solve this programically
 ROOT_PATH = os.getcwd()

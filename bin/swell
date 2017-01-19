@@ -42,6 +42,7 @@ def build_temp_system():
 
 def build_base_system():
     log.info('Building base system')
+    config.setup_base_build_env()
     packages_to_build = resolve_deps('build-base-system')
     for p in packages_to_build:
         task = Task(packages[p])
