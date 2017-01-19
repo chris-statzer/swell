@@ -4,5 +4,5 @@ version: 4.09
 src_uri: https://www.kernel.org/pub/linux/docs/man-pages/man-pages-4.09.tar.xz
 md5: 91c721409bbf823d8f62bee3a1fe8ae3
 commands:
-  - cp ../../src/man-pages-4.09/* .
+  - cp -r ../../src/man-pages-4.09/* .
   - make install

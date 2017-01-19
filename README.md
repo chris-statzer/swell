@@ -42,3 +42,7 @@ Current issues
   configure opts.
 * The optional bin strip currently does not work but is not an issue.
 * Test suite for M4 currently fails with /checks/006.command_li:err
+* Test suite for base-glibc has the following failures:
+  * FAIL: posix/tst-getaddrinfo4
+  * FAIL: posix/tst-getaddrinfo5
+

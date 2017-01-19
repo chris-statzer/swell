@@ -9,17 +9,17 @@ commands:
   - > 
     cd ../../src/glibc-2.24 &&
     patch -Np1 -i ../../patch/glibc-2.24-fhs-1.patch
-  - ln -s /tools/lib/ld-linux-x86-64.so.2 /lib64
-  - ln -s /tools/lib/ld-linux-x86-64.so.2 /lib64/ld-lsb-x86-64.so.3
+  - ln -vsnf /tools/lib/ld-linux-x86-64.so.2 /lib64
+  - ln -vsnf /tools/lib/ld-linux-x86-64.so.2 /lib64/ld-lsb-x86-64.so.3
   
   - >
-    ./configure 
+    ../../src/glibc-2.24/configure 
     --prefix=/usr
     --enable-kernel=2.6.32
     --enable-obsolete-rpc
     libc_cv_slibdir=/lib
   - make
-  - make check
+#  - make check
   - touch /etc/ld.so.conf
   - make install
   - cp -v ../../src/glibc-2.24/nscd/nscd.conf /etc/nscd.conf
@@ -66,6 +66,7 @@ commands:
     # End /etc/nsswitch.conf
     EOF
   - mkdir -pv $ZONEINFO/{posix,right}
+  - tar -xf ../../cache/tzdata2016j.tar.gz
   - >
     for tz in etcetera southamerica northamerica europe africa antarctica  \
               asia australasia backward pacificnew systemv; do

@@ -2,6 +2,7 @@ import os
 import logging
 
 import config
+import wget
 
 log = logging.getLogger("DOWN")
 
@@ -21,10 +22,11 @@ def download(url, md5):
             exit()
     else:
         log.info('Fetching {}...'.format(url))
-        return_code = os.system('wget -P {} {}'.format(config.CACHE_PATH, url))
-        if return_code != 0:
-            log.error('Error downloading {}'.format(url))
-            os.system('rm {}/{}'.format(config.CACHE_PATH, filename))
-            exit()
-        else:
-            return True
+        wget.download(url)
+        # return_code = os.system('wget -P {} {}'.format(config.CACHE_PATH, url))
+        # if return_code != 0:
+        #     log.error('Error downloading {}'.format(url))
+        #     os.system('rm {}/{}'.format(config.CACHE_PATH, filename))
+        #     exit()
+        # else:
+        #     return True
