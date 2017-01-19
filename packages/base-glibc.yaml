@@ -83,7 +83,8 @@ commands:
     /opt/lib
 
     EOF
-  - cat >> /etc/ld.so.conf << "EOF"
+  - >
+    cat >> /etc/ld.so.conf << "EOF"
     # Add an include directory
     include /etc/ld.so.conf.d/*.conf
 

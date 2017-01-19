@@ -11,6 +11,7 @@ class Package(object):
     def __init__(self, filename):
         super(Package, self).__init__()
         with open(filename, 'r') as package_file:
+            log.info('Loading {}'.format(filename))
             self.data = yaml.load(package_file.read())
 
     @property
