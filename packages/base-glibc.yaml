@@ -78,7 +78,7 @@ commands:
   - zic -d $ZONEINFO -p America/New_York
   - cp -v /usr/share/zoneinfo/America/New_York /etc/localtime
   - |
-    cat > /etc/ld.so.conf << "EOF"
+    cat >> /etc/ld.so.conf << "EOF"
     # Begin /etc/ld.so.conf
     /usr/local/lib
     /opt/lib
