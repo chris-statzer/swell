@@ -1,4 +1,5 @@
 #!/bin/bash
+LFS=/mnt/lfs
 
 mount -v --bind /dev $LFS/dev
 

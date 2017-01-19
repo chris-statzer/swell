@@ -41,3 +41,4 @@ Current issues
 * Error building Util-linux-2.29 with udev support. Had to disable in the
   configure opts.
 * The optional bin strip currently does not work but is not an issue.
+* Test suite for M4 currently fails with /checks/006.command_li:err

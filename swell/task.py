@@ -1,5 +1,7 @@
 import logging
 import os
+import subprocess
+import sys
 
 from download import download
 import config
@@ -13,6 +15,7 @@ class Task(object):
 
     def run(self):
         log.info('Running task: {}'.format(self.package.name))
+        sys.stdout.write("\x1b]2;TASK({})\x07".format(self.package.name))
 
         # Check if installed 
         if os.path.isfile('{}/installed/{}'.format(config.DB_PATH, 
@@ -44,7 +47,7 @@ class Task(object):
             self.run_command('rm -rf {}'.format(self.build_path))
 
         # Setup build path
-        self.run_command('mkdir {}'.format(self.build_path))
+        os.mkdir(self.build_path)
         os.chdir(self.build_path)
 
         self.run_command_list(self.package.commands)
@@ -57,9 +60,11 @@ class Task(object):
 
         # clean up and change the directory back to root
         os.chdir(config.ROOT_PATH)
+        self.run_command('rm -rf {}'.format(self.build_path))
 
 
     def run_command(self, cmd):
+        log.info('Running command: \n\r{}'.format(cmd))
         return_code = os.system(cmd)
         if return_code != 0:
             log.error('Nonzero return from command: {}'.format(cmd))
@@ -67,7 +72,6 @@ class Task(object):
 
     def run_command_list(self, cmd_list):
         for cmd in cmd_list:
-            log.info('Running command: \n\r{}'.format(cmd))
             self.run_command(cmd)
 
     @property
