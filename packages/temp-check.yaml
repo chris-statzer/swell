@@ -8,3 +8,6 @@ commands:
     PKG_CONFIG=""
     ../../src/check-0.10.0/configure
     --prefix=/tools
+  - make
+  - make check
+  - make install

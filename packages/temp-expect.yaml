@@ -15,4 +15,4 @@ commands:
     --with-tclinclude=/tools/include
   - make
   - make test
-  - make install
+  - make SCRIPTS="" install

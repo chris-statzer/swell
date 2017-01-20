@@ -31,17 +31,9 @@ commands:
       done
     EOF
     bash fix-head.sh
-  - |
-    cd ../../src/gcc-6.3.0
-    cat > fix-lib.sh << "EOF"
-    case $(uname -m) in
-      x86_64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i.orig gcc/config/i386/t-linux64
-     ;;
-    esac
-    EOF
-    bash fix-lib.sh
+  - >
+    cd ../../src/gcc-6.3.0 &&
+    sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
   - >
     ../../src/gcc-6.3.0/configure
     --target=$LFS_TGT

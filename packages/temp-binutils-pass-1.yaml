@@ -13,11 +13,5 @@ commands:
     --disable-nls
     --disable-werror
   - make
-  - |
-    cat > link-lib.sh << "EOF"
-    case $(uname -m) in
-      x86_64) mkdir -vp /tools/lib && ln -svf lib /tools/lib64 ;;
-    esac
-    EOF
-    bash link-lib.sh
+  - mkdir -vp /tools/lib && ln -svf lib /tools/lib64
   - make install

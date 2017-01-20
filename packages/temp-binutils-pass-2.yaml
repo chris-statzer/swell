@@ -5,7 +5,9 @@ src_uri: http://ftp.gnu.org/gnu/binutils/binutils-2.27.tar.bz2
 md5: 2869c9bf3e60ee97c74ac2a6bf4e9d68
 commands:
   - >
-    CC=$LFS_TGT-gcc AR=$LFS_TGT-ar RANLIB=$LFS_TGT-ranlib
+    CC=$LFS_TGT-gcc
+    AR=$LFS_TGT-ar
+    RANLIB=$LFS_TGT-ranlib
     ../../src/binutils-2.27/configure
     --prefix=/tools
     --disable-nls

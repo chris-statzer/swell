@@ -7,7 +7,7 @@ deps:
   - temp-mpc
 src_uri: http://ftp.gnu.org/gnu/gcc/gcc-6.3.0/gcc-6.3.0.tar.bz2
 md5: 677a7623c7ef6ab99881bc4e048debb6
-commands: 
+commands:
   - rm -f ../../src/gcc-6.3.0/gmp
   - rm -f ../../src/gcc-6.3.0/mpfr
   - rm -f ../../src/gcc-6.3.0/mpc
@@ -34,19 +34,14 @@ commands:
       done
     EOF
     bash fix-head.sh
-  - |
-    cd ../../src/gcc-6.3.0
-    cat > fix-lib.sh << "EOF"
-    case $(uname -m) in
-      x86_64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i.orig gcc/config/i386/t-linux64
-     ;;
-    esac
-    EOF
-    bash fix-lib.sh
   - >
-    CC=$LFS_TGT-gcc CXX=$LFS_TGT-g++ AR=$LFS_TGT-ar RANLIB=$LFS_TGT-ranlib
+    cd ../../src/gcc-6.3.0 &&
+    sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+  - >
+    CC=$LFS_TGT-gcc
+    CXX=$LFS_TGT-g++
+    AR=$LFS_TGT-ar
+    RANLIB=$LFS_TGT-ranlib
     ../../src/gcc-6.3.0/configure
     --prefix=/tools
     --with-local-prefix=/tools
