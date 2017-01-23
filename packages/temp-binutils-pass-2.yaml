@@ -8,14 +8,15 @@ commands:
     CC=$LFS_TGT-gcc
     AR=$LFS_TGT-ar
     RANLIB=$LFS_TGT-ranlib
-    ../../src/binutils-2.27/configure
+    $SOURCE_PATH/binutils-2.27/configure
     --prefix=/tools
     --disable-nls
     --disable-werror
     --with-lib-path=/tools/lib
     --with-sysroot
-  - make
+  - make $MAKE_OPTS
   - make install
   - make -C ld clean
   - make -C ld LIB_PATH=/usr/lib:/lib
   - cp -v ld/ld-new /tools/bin
+  - rm -rf $SOURCE_PATH/binutils-2.27

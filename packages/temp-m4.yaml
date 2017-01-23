@@ -1,10 +1,11 @@
 name: temp-m4
-description: GNU M4 1.4.18
-version: 1.4.18
-src_uri: http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.xz
-md5: 730bb15d96fffe47e148d1e09235af82
+description: GNU M4
+version: 1.4.17
+src_uri: http://ftp.gnu.org/gnu/m4/m4-1.4.17.tar.xz
+md5: 12a3c829301a4fd6586a57d3fcf196dc
 commands:
-  - ../../src/m4-1.4.18/configure --prefix=/tools
-  - make
+  - $SOURCE_PATH/m4-1.4.17/configure --prefix=/tools
+  - make $MAKE_OPTS
 #  - make check
   - make install
+  - rm -rf $SOURCE_PATH/m4.1.4.17

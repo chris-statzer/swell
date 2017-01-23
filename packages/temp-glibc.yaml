@@ -5,7 +5,7 @@ src_uri: http://ftp.gnu.org/gnu/glibc/glibc-2.24.tar.xz
 md5: 97dc5517f92016f3d70d83e3162ad318
 commands:
   - >
-    ../../src/glibc-2.24/configure
+    $SOURCE_PATH/glibc-2.24/configure
     --prefix=/tools
     --host=$LFS_TGT
     --build=$(../../src/glibc-2.24/config.guess)
@@ -13,5 +13,6 @@ commands:
     --with-headers=/tools/include
     libc_cv_forced_unwind=yes
     libc_cv_c_cleanup=yes
-  - make
+  - make $MAKE_OPTS
   - make install
+  - rm -rf $SOURCE_PATH/glibc-2.24

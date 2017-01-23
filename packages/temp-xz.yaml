@@ -4,7 +4,8 @@ version: 5.2.3
 src_uri: http://tukaani.org/xz/xz-5.2.3.tar.xz
 md5: 60fb79cab777e3f71ca43d298adacbd5
 commands:
-  - ../../src/xz-5.2.3/configure --prefix=/tools
-  - make
+  - $SOURCE_PATH/xz-5.2.3/configure --prefix=/tools
+  - make $MAKE_OPTS
   - make check
   - make install
+  - rm -rf $SOURCE_PATH/xz-5.2.3

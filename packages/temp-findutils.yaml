@@ -4,7 +4,8 @@ version: 4.6.0
 src_uri: http://ftp.gnu.org/gnu/findutils/findutils-4.6.0.tar.gz
 md5: 9936aa8009438ce185bea2694a997fc1
 commands:
-  - ../../src/findutils-4.6.0/configure --prefix=/tools
-  - make
+  - $SOURCE_PATH/findutils-4.6.0/configure --prefix=/tools
+  - make $MAKE_OPTS
   - make check
   - make install
+  - rm -rf $SOURCE_PATH/findutils-4.6.0

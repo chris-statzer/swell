@@ -33,6 +33,7 @@ ENV['SOURCE_PATH'] = SOURCE_PATH
 ENV['PATCH_PATH'] = PATCH_PATH
 ENV['BUILD_PATH'] = BUILD_PATH
 ENV['MAKE_OPTS'] = MAKE_OPTS
+ENV['HOME'] = os.environ['HOME'] # for tcl-core tests
 
 # check paths and make them if needed
 paths = [CACHE_PATH,

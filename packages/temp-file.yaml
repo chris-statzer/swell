@@ -1,10 +1,11 @@
 name: temp-file
-description: File 5.29
-version: 5.29
-src_uri: ftp://ftp.astron.com/pub/file/file-5.29.tar.gz
-md5: b7b57b36b577c9cede2f2d1342203302
+description: File 5.28
+version: 5.28
+src_uri: ftp://ftp.astron.com/pub/file/file-5.28.tar.gz
+md5: 3f7771424aa855f32094b49571e19b33
 commands: 
-  - ../../src/file-5.29/configure --prefix=/tools
-  - make
+  - $SOURCE_PATH/file-5.28/configure --prefix=/tools
+  - make $MAKE_OPTS
 #  - make check
   - make install
+  - rm -rf $SOURCE_PATH/file-5.2.8

@@ -6,7 +6,7 @@ md5: df3f5690eaa30fd228537b00cb7b7590
 commands:
   - >
     EMACS="no"
-    ../../src/gettext-0.19.8.1/gettext-tools/configure
+    $SOURCE_PATH/gettext-0.19.8.1/gettext-tools/configure
     --prefix=/tools
     --disable-shared
   - make -C gnulib-lib
@@ -15,3 +15,4 @@ commands:
   - make -C src msgmerge
   - make -C src xgettext
   - cp -v src/{msgfmt,msgmerge,xgettext} /tools/bin
+  - rm -rf $SOURCE_PATH/gettext-0.19.8.1

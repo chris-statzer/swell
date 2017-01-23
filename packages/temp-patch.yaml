@@ -4,7 +4,8 @@ version: 2.7.5
 src_uri: http://ftp.gnu.org/gnu/patch/patch-2.7.5.tar.xz
 md5: e3da7940431633fb65a01b91d3b7a27a
 commands:
-  - ../../src/patch-2.7.5/configure --prefix=/tools
-  - make
+  - $SOURCE_PATH/patch-2.7.5/configure --prefix=/tools
+  - make $MAKE_OPTS
   - make check
   - make install
+  - rm -rf $SOURCE_PATH/patch-2.7.5

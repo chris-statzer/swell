@@ -1,14 +1,15 @@
 name: temp-bash
-description: Bash 4.4
-version: 4.4
-src_uri: http://ftp.gnu.org/gnu/bash/bash-4.4.tar.gz
-md5: 148888a7c95ac23705559b6f477dfe25
+description: Bash 4.3.30
+version: 4.3.30
+src_uri: http://ftp.gnu.org/gnu/bash/bash-4.3.30.tar.gz
+md5: a27b3ee9be83bd3ba448c0ff52b28447
 commands:
   - >
-    ../../src/bash-4.4/configure
+    $SOURCE_PATH/bash-4.3.30/configure
     --prefix=/tools 
     --without-bash-malloc
-  - make
+  - make $MAKE_OPTS
   - make tests
   - make install
   - ln -sv bash /tools/bin/sh
+  - rm -rf $SOURCE_PATH/bash-4.3.30

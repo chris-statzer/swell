@@ -4,7 +4,8 @@ version: 3.5
 src_uri: http://ftp.gnu.org/gnu/diffutils/diffutils-3.5.tar.xz
 md5: 569354697ff1cfc9a9de3781361015fa
 commands:
-  - ../../src/diffutils-3.5/configure --prefix=/tools
-  - make
+  - $SOURCE_PATH/diffutils-3.5/configure --prefix=/tools
+  - make $MAKE_OPTS
 #  - make check
   - make install
+  - rm -rf $SOURCE_PATH/diffutils-3.5

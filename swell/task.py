@@ -16,7 +16,8 @@ class Task(object):
 
     def run(self):
         log.info('Running task: {}'.format(self.package.name))
-        sys.stdout.write("\x1b]2;TASK({})\x07".format(self.package.name))
+        sys.stdout.write("\033]0;TASK({})\007".format(self.package.name))
+        sys.stdout.flush()
 
         # Check if installed
         if os.path.isfile('{}/installed/{}'.format(config.DB_PATH,

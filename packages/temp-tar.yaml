@@ -4,7 +4,8 @@ version: 1.29
 src_uri: http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
 md5: a1802fec550baaeecff6c381629653ef
 commands:
-  - ../../src/tar-1.29/configure --prefix=/tools
-  - make
-  - make check
+  - $SOURCE_PATH/tar-1.29/configure --prefix=/tools
+  - make $MAKE_OPTS
+#  - make check
   - make install
+  - rm -rf $SOURCE_PATH/tar-1.29

@@ -5,6 +5,6 @@ src_uri: https://distfiles.macports.org/zlib/zlib-1.2.10.tar.xz
 md5: 40f9e5b387a917c60fc0981619dcdfba
 commands:
   - ../../src/zlib-1.2.10/configure --prefix=/tools
-  - make
+  - make $MAKE_OPTS
   - make check
   - make install

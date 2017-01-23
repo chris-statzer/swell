@@ -4,15 +4,16 @@ version: 5.45
 src_uri: http://prdownloads.sourceforge.net/expect/expect5.45.tar.gz
 md5: 44e1a4f4c877e9ddc5a542dfa7ecc92b
 commands:
-  - cp ../../src/expect5.45/configure .
+  - cp $SOURCE_PATH/expect5.45/configure .
   - cp -v configure{,.orig} &
   - sed 's:/usr/local/bin:/bin:' configure.orig > configure
-  - cp ./configure ../../src/expect5.45
+  - cp ./configure $SOURCE_PATH/expect5.45
   - >
-    ../../src/expect5.45/configure
+    $SOURCE_PATH/expect5.45/configure
     --prefix=/tools
     --with-tcl=/tools/lib
     --with-tclinclude=/tools/include
-  - make
+  - make $MAKE_OPTS
   - make test
   - make SCRIPTS="" install
+  - rm -rf $SOURCE_PATH/expect5.45

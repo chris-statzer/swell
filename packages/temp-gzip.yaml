@@ -4,7 +4,8 @@ version: 1.8
 src_uri: http://ftp.gnu.org/gnu/gzip/gzip-1.8.tar.xz
 md5: f7caabb65cddc1a4165b398009bd05b9
 commands:
-  - ../../src/gzip-1.8/configure --prefix=/tools
-  - make
+  - $SOURCE_PATH/gzip-1.8/configure --prefix=/tools
+  - make $MAKE_OPTS
   - make check
   - make install
+  - rm -rf $SOURCE_PATH/gzip-1.8

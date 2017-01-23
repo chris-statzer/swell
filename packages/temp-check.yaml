@@ -6,8 +6,9 @@ md5: 53c5e5c77d090e103a17f3ed7fd7d8b8
 commands:
   - >
     PKG_CONFIG=""
-    ../../src/check-0.10.0/configure
+    $SOURCE_PATH/check-0.10.0/configure
     --prefix=/tools
-  - make
+  - make $MAKE_OPTS
   - make check
   - make install
+  - rm -rf $SOURCE_PATH/check-0.10.0

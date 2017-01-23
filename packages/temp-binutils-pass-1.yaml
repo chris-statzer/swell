@@ -12,6 +12,7 @@ commands:
     --target=$LFS_TGT
     --disable-nls
     --disable-werror
-  - make
+  - make $MAKE_OPTS
   - mkdir -vp /tools/lib && ln -svf lib /tools/lib64
   - make install
+  - rm -rf $SOURCE_PATH/binutils-2.27

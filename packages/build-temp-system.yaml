@@ -6,7 +6,7 @@ deps:
   - temp-gcc-pass-1
   - temp-linux-headers-pass-1
   - temp-glibc
-  - temp-libstdc++-pass-1
+  - temp-libstdc++
   - temp-binutils-pass-2
   - temp-gcc-pass-2
   - temp-tcl-core
@@ -18,7 +18,7 @@ deps:
   - temp-bzip2
   - temp-coreutils
   - temp-diffutils
-  - temp-zlib
+#  - temp-zlib
   - temp-file
   - temp-findutils
   - temp-gawk

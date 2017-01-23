@@ -4,7 +4,8 @@ version: 1.6
 src_uri: http://ftp.gnu.org/gnu/dejagnu/dejagnu-1.6.tar.gz
 md5: 1fdc2eb0d592c4f89d82d24dfdf02f0b
 commands:
-  - ../../src/dejagnu-1.6/configure --prefix=/tools
-  - make
+  - $SOURCE_PATH/dejagnu-1.6/configure --prefix=/tools
+  - make $MAKE_OPTS
   - make install
   - make check
+  - rm -rf $SOURCE_PATH/dejagnu-1.6
