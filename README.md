@@ -23,6 +23,8 @@ Additions
 During the temp system install a few extras are needed to run the build system.
 The list below are packages added to the temp systme built in chapter 5:
 
+* temp-zlib is needed for temp-python to install setuptools
+* temp python to run the build scripts
 * temp-python-setuptools-33.1.1
 * temp-python-docopt-0.6.2
 * temp-python-pyyaml-3.12

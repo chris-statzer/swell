@@ -18,7 +18,6 @@ deps:
   - temp-bzip2
   - temp-coreutils
   - temp-diffutils
-#  - temp-zlib
   - temp-file
   - temp-findutils
   - temp-gawk
@@ -34,6 +33,7 @@ deps:
   - temp-texinfo
   - temp-util-linux
   - temp-xz
+  - temp-zlib
   - temp-python
   - temp-python-setuptools
   - temp-python-docopt
