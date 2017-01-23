@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 
+import bash
 from download import download
 import config
 
@@ -17,8 +18,8 @@ class Task(object):
         log.info('Running task: {}'.format(self.package.name))
         sys.stdout.write("\x1b]2;TASK({})\x07".format(self.package.name))
 
-        # Check if installed 
-        if os.path.isfile('{}/installed/{}'.format(config.DB_PATH, 
+        # Check if installed
+        if os.path.isfile('{}/installed/{}'.format(config.DB_PATH,
                                                    self.package.name)):
             log.info('{} is already installed skipping!'.format(
                 self.package.name))
@@ -65,7 +66,7 @@ class Task(object):
 
     def run_command(self, cmd):
         log.info('Running command: \n\r{}'.format(cmd))
-        return_code = os.system(cmd)
+        return_code = bash.bash_command(cmd)
         if return_code != 0:
             log.error('Nonzero return from command: {}'.format(cmd))
             exit()
