@@ -4,4 +4,11 @@ version: 2.0.2
 src_uri: http://hisham.hm/htop/releases/2.0.2/htop-2.0.2.tar.gz
 md5: 7d354d904bad591a931ad57e99fea84a
 commands:
-  - echo "HAHA"
+  - $SOURCE_PATH/htop-2.0.2/configure --prefix=$PREFIX/htop
+  - make
+  - make install
+  - rm -rf $SOURCE_PATH/htop-2.0.2
+  - |
+    cat > /etc/profile.d/htop.sh << "EOF"
+    export PATH=/opt/htop/bin:$PATH
+    EOF

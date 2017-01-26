@@ -5,3 +5,4 @@ db/
 src/
 backup/
 .DS_Store
+*.swp

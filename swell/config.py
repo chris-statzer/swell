@@ -51,6 +51,7 @@ ENV['BUILD_PATH'] = BUILD_PATH
 ENV['MAKE_OPTS'] = MAKE_OPTS
 ENV['HOME'] = os.environ['HOME'] # for tcl-core tests
 ENV['PREFIX'] = '/opt'
+ENV['PATH'] = os.environ['PATH']
 
 # check paths and make them if needed
 paths = [CACHE_PATH,

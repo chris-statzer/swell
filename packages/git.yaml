@@ -1,0 +1,15 @@
+name: git
+description: Git VCS
+version: 2.11.0
+src_uri: https://www.kernel.org/pub/software/scm/git/git-2.11.0.tar.xz
+md5: dd4e3360e28aec5bb902fb34dd7fce3b
+commands:
+  - cp -rv $SOURCE_PATH/git-2.11.0/* . 
+  - ./configure --prefix=$PREFIX/git
+  - make
+  - make install
+  - rm -rf $SOURCE_PATH/git-2.11.0
+  - |
+    cat > /etc/profile.d/git.sh << "EOF"
+    export PATH=/opt/git/bin:$PATH
+    EOF
