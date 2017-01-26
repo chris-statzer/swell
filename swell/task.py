@@ -3,9 +3,9 @@ import os
 import subprocess
 import sys
 
-import bash
-from download import download
-import config
+from swell import bash
+from swell.download import download
+from swell import config
 
 log = logging.getLogger('TASK')
 

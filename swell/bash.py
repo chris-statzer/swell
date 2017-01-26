@@ -2,7 +2,7 @@ import os
 import subprocess
 import logging
 
-import config
+from  swell import config
 
 log = logging.getLogger('BASH')
 

@@ -1,5 +1,0 @@
-name: temp-change-ownership
-description: change the ownership of the built toolchain
-version: 0.1
-commands:
-  - sudo chown -R root:root $LFS/

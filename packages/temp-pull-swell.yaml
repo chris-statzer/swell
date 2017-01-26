@@ -1,8 +1,0 @@
-name: temp-pull-swell
-description: pull a copy of the swell framework to the host.
-version: 0.1
-commands:
-  - git clone https://github.com/chris-statzer/swell
-  - cp -r swell $LFS/tools
-  - mkdir -pv $LFS/tools/swell/cache
-  - cp ../../cache/* $LFS/tools/swell/cache
