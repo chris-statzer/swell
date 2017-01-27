@@ -24,9 +24,9 @@ class ColoredFormatter(logging.Formatter):
 
 
 formatter = ColoredFormatter(
-            (u"\x1B[1;33m[%(levelname)-20s\x1B[1;33m]\x1B[1;32m %(name)s\x1B[0m %(asctime)s "
-             u"\x1B[1;37m%(message)s\x1B[0m"),
-            u"%H:%M:%S")
+    (u"\x1B[1;33m[%(levelname)-20s\x1B[1;33m]"
+     u"\x1B[1;32m %(name)s\x1B[0m %(asctime)s "
+     u"\x1B[1;37m%(message)s\x1B[0m"), u"%H:%M:%S")
 
 # logging.basicConfig(level=logging.DEBUG)
 
@@ -37,5 +37,5 @@ console.setFormatter(formatter)
 def get_logger(name):
     new_log = logging.getLogger(name)
     new_log.addHandler(console)
-    new_log.setLevel(logging.INFO)
+    new_log.setLevel(logging.DEBUG)
     return new_log

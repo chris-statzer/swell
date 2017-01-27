@@ -2,8 +2,9 @@ import os
 import logging
 
 from swell.bash import bash_command
+from swell.logger import get_logger
 
-log = logging.getLogger('md5')
+log = get_logger('MD5 ')
 
 
 def md5sum(filename):

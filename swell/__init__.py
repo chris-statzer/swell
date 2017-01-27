@@ -6,7 +6,6 @@ from swell import config
 
 log = logging.getLogger('INIT')
 
-
 if os.system('which pip3') != 0:
     log.error('Pip not found, fetching!')
     download('https://bootstrap.pypa.io/get-pip.py')

@@ -4,7 +4,9 @@ import logging
 
 import yaml
 
-log = logging.getLogger('PACK')
+from swell.logger import get_logger
+
+log = get_logger('PACK')
 
 
 class Package(object):
@@ -12,7 +14,7 @@ class Package(object):
     def __init__(self, filename):
         super(Package, self).__init__()
         with open(filename, 'r') as package_file:
-            log.info('Loading {}'.format(filename))
+            log.debug('Loading {}'.format(filename))
             self.data = yaml.load(package_file.read())
 
     @property
