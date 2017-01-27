@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
 
-cli = """
-Usage:
-    swell package list
-    swell package install <package>
-    swell build_temp_system
-    swell build_base_system
-"""
 import sys
 import logging
 
@@ -21,10 +14,20 @@ from swell.task import Task
 
 from docopt import docopt
 
+cli = """
+Usage:
+    swell list
+    swell install <package>
+    swell build_temp_system
+    swell build_base_system
+"""
+
 packages = load_packages()
+
 
 def list_packages():
     dump_packages()
+
 
 def install_package(package):
     if package in packages:
@@ -32,6 +35,7 @@ def install_package(package):
         task.run()
     else:
         log.error('{} not found!'.format(package))
+
 
 def build_temp_system():
     log.info('Building temp system')
@@ -42,6 +46,7 @@ def build_temp_system():
         task.run()
         a = raw_input('pause!')
 
+
 def build_base_system():
     log.info('Building base system')
     config.setup_base_build_env()
@@ -50,17 +55,17 @@ def build_base_system():
         task = Task(packages[p])
         task.run()
 
+
 if __name__ == '__main__':
     arguments = docopt(cli)
     # package
-    if arguments['package']:
-        # list
-        if arguments['list']:
-            list_packages()
-        # install
-        elif arguments['install']:
-            if arguments['<package>']:
-                install_package(arguments['<package>'])
+
+    if arguments['list']:
+        list_packages()
+    # install
+    elif arguments['install']:
+        if arguments['<package>']:
+            install_package(arguments['<package>'])
     # build_temp_system
     elif arguments['build_temp_system']:
         build_temp_system()

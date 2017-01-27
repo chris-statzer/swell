@@ -2,6 +2,7 @@ import os
 import logging
 
 from swell import config
+from swell.md5sum import md5sum
 
 log = logging.getLogger("DOWN")
 
@@ -9,13 +10,12 @@ log = logging.getLogger("DOWN")
 def download(url, md5=None):
     """ TODO: doesnt get md5sum of downloaded.....
         log.info('downloading {} of type {}'.format(url, file_type)) """
-    filename = url[url.rfind('/')+1:]
+    filename = url[url.rfind('/') + 1:]
     if os.path.isfile('{}/{}'.format(config.CACHE_PATH, filename)):
         if md5 is None:
             return True
-        log.info('{} exists. Checking md5'.format(filename))
-        md5_cmd = 'md5sum {}/{}'.format(config.CACHE_PATH, filename)
-        cache_md5 = os.popen().read().split(md5_cmd)[0].rstrip()
+        cache_md5 = md5sum('{}/{}'.format(config.CACHE_PATH, filename))
+        log.info('got \n\r{} : expected \n\r{}'.format(md5, cache_md5))
         if cache_md5 == md5:
             log.info('Good md5 using the cached file.')
             return True

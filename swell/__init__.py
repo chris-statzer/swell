@@ -2,7 +2,7 @@ import os
 import logging
 
 from swell.download import download
-from sell.config import CACHE_PATH
+from swell.config import CACHE_PATH
 
 log = logging.getLogger('INIT')
 
