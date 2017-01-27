@@ -1,4 +1,3 @@
-import logging
 import os
 import subprocess
 import sys
@@ -6,8 +5,9 @@ import sys
 from swell import bash
 from swell.download import download
 from swell import config
+from swell.logger import get_logger
 
-log = logging.getLogger('TASK')
+log = get_logger('TASK')
 
 
 class Task(object):
@@ -63,7 +63,6 @@ class Task(object):
         self.run_command('rm -rf {}'.format(self.build_path))
 
     def run_command(self, cmd):
-        log.info('Running command: \n\r{}'.format(cmd))
         return_code = bash.bash_command(cmd)
         if return_code != 0:
             log.error('Nonzero return from command: {}'.format(cmd))

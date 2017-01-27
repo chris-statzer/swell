@@ -3,15 +3,12 @@
 import sys
 import logging
 
-logging.basicConfig(level=logging.INFO)
-log = logging.getLogger('SWELL')
-
 
 sys.path.insert(0, "./")
 from swell import config
 from swell.package import dump_packages, load_packages, resolve_deps
 from swell.task import Task
-
+from swell.logger import get_logger
 from docopt import docopt
 
 cli = """
@@ -22,6 +19,7 @@ Usage:
     swell build_base_system
 """
 
+log = get_logger('SWELL')
 packages = load_packages()
 
 

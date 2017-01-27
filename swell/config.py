@@ -1,8 +1,8 @@
 import os
-import logging
 
-log = logging.getLogger('CONF')
+from swell.logger import get_logger
 
+log = get_logger('CONF')
 
 ENV = {}
 

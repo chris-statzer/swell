@@ -1,10 +1,11 @@
 import os
-import logging
 
 from swell import config
 from swell.md5sum import md5sum
+from swell.logger import get_logger
 
-log = logging.getLogger("DOWN")
+
+log = get_logger("DOWN")
 
 
 def download(url, md5=None):
@@ -15,7 +16,6 @@ def download(url, md5=None):
         if md5 is None:
             return True
         cache_md5 = md5sum('{}/{}'.format(config.CACHE_PATH, filename))
-        log.info('got \n\r{} : expected \n\r{}'.format(md5, cache_md5))
         if cache_md5 == md5:
             log.info('Good md5 using the cached file.')
             return True
