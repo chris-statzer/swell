@@ -1,0 +1,14 @@
+name: grub
+description: Grub Bootloader 
+version: 
+src_uri: http://alpha.gnu.org/gnu/grub/grub-2.02~beta3.tar.xz
+md5: ab399fc6f74a97d66ff77f04b743149c
+commands:
+  - $SOURCE_PATH/grub-2.02~beta3/configure --prefix=$PREFIX/grub
+  - make
+  - make install
+  - rm -rf $SOURCE_PATH/grub-2.02~beta3
+  - |
+    cat > /etc/profile.d/grub.sh << "EOF"
+    export PATH=/opt/grub/bin:$PATH
+    EOF

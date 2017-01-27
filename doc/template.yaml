@@ -1,0 +1,14 @@
+name: 
+description: 
+version: 
+src_uri: 
+md5: 
+commands:
+  - $SOURCE_PATH//configure --prefix=$PREFIX/htop
+  - make
+  - make install
+  - rm -rf $SOURCE_PATH/
+  - |
+    cat > /etc/profile.d/.sh << "EOF"
+    export PATH=/opt//bin:$PATH
+    EOF
