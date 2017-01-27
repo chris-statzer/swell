@@ -1,0 +1,10 @@
+name: bc
+description:
+version: 1.06.95
+src_uri: http://alpha.gnu.org/gnu/bc/bc-1.06.95.tar.bz2
+md5: 5126a721b73f97d715bb72c13c889035
+commands:
+  - $SOURCE_PATH/bc-1.06.95/configure --prefix=/usr
+  - make
+  - make install
+  - rm -rf $SOURCE_PATH/
