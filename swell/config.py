@@ -3,23 +3,9 @@ import logging
 
 log = logging.getLogger('CONF')
 
-if os.system('which pip3') != 0:
-    print('pip not found!')
-    os.system('wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py')
-
-try:
-    import docopt
-except ImportError:
-    print ('docopt not found') 
-    os.system('pip install docopt')
-
-try:
-    import yaml
-except ImportError:
-    os.system('pip install pyyaml')
-
 
 ENV = {}
+
 
 def setup_temp_build_env():
     log.info('Setting up temp system build env')
@@ -29,9 +15,11 @@ def setup_temp_build_env():
     ENV['PATH'] = '/tools/bin:' + os.environ['PATH']
     # log.info('Current PATH: \n\r{}'.format(os.environ['PATH']))
 
+
 def setup_base_build_env():
     ENV['ZONEINFO'] = '/usr/share/zoneinfo'
     ENV['PATH'] = '/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin'
+
 
 # solve this programically
 ROOT_PATH = os.getcwd()
@@ -49,7 +37,7 @@ ENV['SOURCE_PATH'] = SOURCE_PATH
 ENV['PATCH_PATH'] = PATCH_PATH
 ENV['BUILD_PATH'] = BUILD_PATH
 ENV['MAKE_OPTS'] = MAKE_OPTS
-ENV['HOME'] = os.environ['HOME'] # for tcl-core tests
+ENV['HOME'] = os.environ['HOME']  # for tcl-core tests
 ENV['PREFIX'] = '/opt'
 ENV['PATH'] = os.environ['PATH']
 

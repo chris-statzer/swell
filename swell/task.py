@@ -9,6 +9,7 @@ from swell import config
 
 log = logging.getLogger('TASK')
 
+
 class Task(object):
     def __init__(self, package):
         super(Task, self).__init__()
@@ -33,15 +34,11 @@ class Task(object):
             # extract the package to the src directory
             url = self.package.src_uri
             filename = url[url.rfind('/')+1:]
-            tar_flags = ''
-            if url[-2:] == 'gz':
-                tar_flags = 'xzf'
-            elif url[-2:] == 'xz':
-                tar_flags = 'xJf'
-            elif url[-3:] == 'bz2':
-                tar_flags = 'xjf'
-            extract_cmd = 'tar {} {}/{} -C {}'.format(tar_flags, config.CACHE_PATH, filename, config.SOURCE_PATH)
-            log.info('Extracting {} to {}'.format(filename, config.SOURCE_PATH))
+            extract_cmd = 'tar xf {}/{} -C {}'.format(config.CACHE_PATH,
+                                                      filename,
+                                                      config.SOURCE_PATH)
+            log.info('Extracting {} to {}'.format(filename,
+                                                  config.SOURCE_PATH))
             self.run_command(extract_cmd)
 
         # delete old build directory if it exists
@@ -58,12 +55,12 @@ class Task(object):
 
         # mark package as installed
         log.info('Marking {} as installed...'.format(self.package.name))
-        self.run_command('touch {}/installed/{}'.format(config.DB_PATH, self.package.name))
+        self.run_command('touch {}/installed/{}'.format(config.DB_PATH,
+                                                        self.package.name))
 
         # clean up and change the directory back to root
         os.chdir(config.ROOT_PATH)
         self.run_command('rm -rf {}'.format(self.build_path))
-
 
     def run_command(self, cmd):
         log.info('Running command: \n\r{}'.format(cmd))

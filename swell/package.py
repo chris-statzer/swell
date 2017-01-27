@@ -6,6 +6,7 @@ import yaml
 
 log = logging.getLogger('PACK')
 
+
 class Package(object):
     """docstring for Package."""
     def __init__(self, filename):
@@ -56,10 +57,11 @@ def load_packages():
 
     packages = {}
     for p in package_glob:
-        #log.info('Loading package: {}'.format(p))
+        # log.info('Loading package: {}'.format(p))
         package = Package(p)
         packages[package.name] = package
     return packages
+
 
 def _resolve(package_list, package):
     dep_list = []
@@ -70,12 +72,14 @@ def _resolve(package_list, package):
             dep_list.append(dep)
     return dep_list
 
+
 def _flatten(package_list):
     packages = []
     for p in package_list:
-        if not p in packages:
+        if p not in packages:
             packages.append(p)
     return packages
+
 
 def resolve_deps(package):
     package_list = load_packages()
@@ -83,6 +87,7 @@ def resolve_deps(package):
     deps_list += _resolve(package_list, package)
     deps_list = _flatten(deps_list)
     return deps_list
+
 
 def dump_packages():
     package_list = load_packages()
