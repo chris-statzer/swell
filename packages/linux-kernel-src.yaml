@@ -1,0 +1,9 @@
+name: linux-kernel-src
+description: Source for the linux kernel
+version: 4.7.2
+src_uri: https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.7.2.tar.xz
+md5: ae493473d074185205a54bc8ad49c3b4
+commands:
+  - mkdir $PREFIX/linux
+  - cp -rT $SOURCE_PATH/* $PREFIX/linux
+  - rm -rf $SOURCE_PATH/linux-4.7.2

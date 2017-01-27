@@ -15,8 +15,6 @@ cli = """
 Usage:
     swell list
     swell install <package>
-    swell build_temp_system
-    swell build_base_system
 """
 
 log = get_logger('SWELL')
