@@ -1,7 +1,7 @@
 name: temp-glibc
 description: GNU Glibc 2.24
 version: 2.24
-src_uri: http://ftp.gnu.org/gnu/glibc/glibc-2.24.tar.xz
+src_uri: https://mirrors.sjtug.sjtu.edu.cn/gnu/glibc/glibc-2.24.tar.xz
 md5: 97dc5517f92016f3d70d83e3162ad318
 commands:
   - >

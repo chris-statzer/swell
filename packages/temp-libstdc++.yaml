@@ -1,18 +1,18 @@
 name: temp-libstdc++
-description: GNU libstdc++ 6.2.0
-version: 6.2.0
-src_uri: http://ftp.gnu.org/gnu/gcc/gcc-6.2.0/gcc-6.2.0.tar.bz2
-md5: 9768625159663b300ae4de2f4745fcc4
-commands: 
+description: GNU libstdc++ 6.5.0
+version: 6.5.0
+src_uri: https://mirrors.sjtug.sjtu.edu.cn/gnu/gcc/gcc-6.5.0/gcc-6.5.0.tar.gz
+md5: f02b6b1af90e9c45a23def1261848bda
+commands:
   - >
-    $SOURCE_PATH/gcc-6.2.0/libstdc++-v3/configure
+    $SOURCE_PATH/gcc-6.5.0/libstdc++-v3/configure
     --host=$LFS_TGT
     --prefix=/tools
     --disable-multilib
     --disable-nls
     --disable-libstdcxx-threads
     --disable-libstdcxx-pch
-    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/6.2.0
+    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/6.5.0
   - make $MAKE_OPTS
   - make install
-  - rm -rf $SOURCE_PATH/gcc-6.2.0
+  - rm -rf $SOURCE_PATH/gcc-6.5.0

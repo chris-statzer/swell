@@ -3,9 +3,9 @@ import os
 import subprocess
 import sys
 
-import bash
-from download import download
-import config
+from . import bash
+from .download import download
+from . import config
 
 log = logging.getLogger('TASK')
 

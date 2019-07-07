@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 
 cli = """
 Usage:
@@ -39,7 +39,7 @@ def build_temp_system():
     for p in packages_to_build:
         task = Task(packages[p])
         task.run()
-        a = raw_input('pause!')
+        #a = input('pause!')
 
 def build_base_system():
     log.info('Building base system')

@@ -1,17 +1,17 @@
 name: temp-gcc-pass-1
-description: GNU GCC 6.2.0 (First Pass)
-version: 6.2.0
-src_uri: http://ftp.gnu.org/gnu/gcc/gcc-6.2.0/gcc-6.2.0.tar.bz2
-md5: 9768625159663b300ae4de2f4745fcc4
+description: GNU GCC 6.5.0 (First Pass)
+version: 6.5.0
+src_uri: https://mirrors.sjtug.sjtu.edu.cn/gnu/gcc/gcc-6.5.0/gcc-6.5.0.tar.gz
+md5: f02b6b1af90e9c45a23def1261848bda
 commands:
   - tar xf $CACHE_PATH/mpfr-3.1.4.tar.xz
-  - tar xf $CACHE_PATH/gmp-6.1.1.tar.xz
+  - tar xf $CACHE_PATH/gmp-6.1.1.tar.bz2
   - tar xf $CACHE_PATH/mpc-1.0.3.tar.gz
-  - mv mpfr-3.1.4 $SOURCE_PATH/gcc-6.2.0/mpfr
-  - mv gmp-6.1.1 $SOURCE_PATH/gcc-6.2.0/gmp
-  - mv mpc-1.0.3 $SOURCE_PATH/gcc-6.2.0/mpc
+  - mv mpfr-3.1.4 $SOURCE_PATH/gcc-6.5.0/mpfr
+  - mv gmp-6.1.1 $SOURCE_PATH/gcc-6.5.0/gmp
+  - mv mpc-1.0.3 $SOURCE_PATH/gcc-6.5.0/mpc
   - |
-    cd $SOURCE_PATH/gcc-6.2.0
+    cd $SOURCE_PATH/gcc-6.5.0
     cat > fix-head.sh << "EOF"
     for file in gcc/config/{linux,i386/linux{,64}}.h
       do
@@ -28,10 +28,10 @@ commands:
     EOF
     bash fix-head.sh
   - >
-    cd $SOURCE_PATH/gcc-6.2.0 &&
+    cd $SOURCE_PATH/gcc-6.5.0 &&
     sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
   - >
-    $SOURCE_PATH/gcc-6.2.0/configure
+    $SOURCE_PATH/gcc-6.5.0/configure
     --target=$LFS_TGT
     --prefix=/tools
     --with-glibc-version=2.23
@@ -55,4 +55,4 @@ commands:
     --enable-languages=c,c++
   - make $MAKE_OPTS
   - make install
-  - rm -rf $SOURCE_PATH/gcc-6.2.0
+  - rm -rf $SOURCE_PATH/gcc-6.5.0

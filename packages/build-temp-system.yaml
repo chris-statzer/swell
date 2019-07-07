@@ -3,6 +3,9 @@ description: Metapackage to boostrap the LFS system
 version: 0.1
 deps:
   - temp-binutils-pass-1
+  - download-mpfr
+  - download-gmp
+  - download-mpc
   - temp-gcc-pass-1
   - temp-linux-headers-pass-1
   - temp-glibc

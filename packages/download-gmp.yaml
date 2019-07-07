@@ -1,0 +1,7 @@
+name: download-gmp
+description: gmp 6.1.1 (Download Only)
+version: 6.1.1
+src_uri: https://mirrors.sjtug.sjtu.edu.cn/gnu/gmp/gmp-6.1.1.tar.bz2
+md5: 064b2c18185038e404a401b830d59be8
+commands:
+  - ""

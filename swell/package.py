@@ -86,12 +86,12 @@ def resolve_deps(package):
 
 def dump_packages():
     package_list = load_packages()
-    print 'Package list:\n\r'
-    for k, v in package_list.items():
-        print '       Name:', v.name, v.version
-        print 'Description:', v.description
+    print('Package list:\n\r')
+    for k, v in list(package_list.items()):
+        print('       Name:', v.name, v.version)
+        print('Description:', v.description)
         if v.deps:
-            print '       Deps:'
+            print('       Deps:')
             for d in v.deps:
-                print '          - ', d
-        print ''
+                print('          - ', d)
+        print('')

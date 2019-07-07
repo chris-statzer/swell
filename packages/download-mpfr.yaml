@@ -1,0 +1,7 @@
+name: download-mpfr
+description: MPFR 3.1.4 (Download Only)
+version: 2.27
+src_uri: https://mirrors.sjtug.sjtu.edu.cn/gnu/mpfr/mpfr-3.1.4.tar.xz
+md5: 064b2c18185038e404a401b830d59be8
+commands:
+  - ""
